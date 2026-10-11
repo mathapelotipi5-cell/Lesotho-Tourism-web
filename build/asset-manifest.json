@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.266ab4b7.css",
+    "main.js": "/static/js/main.9cf9cb71.js",
+    "static/js/453.430fc833.chunk.js": "/static/js/453.430fc833.chunk.js",
+    "static/media/afriski.jpg": "/static/media/afriski.d1cbfe61766678792123.jpg",
+    "static/media/Sehlabathebe-National-Park.jpg": "/static/media/Sehlabathebe-National-Park.db77be8d712110ff6268.jpg",
+    "static/media/maletsunyane-waterfall.jpg": "/static/media/maletsunyane-waterfall.1b8fbc5a2c9b283d7139.jpg",
+    "static/media/bokong-nature-reserve.jpg": "/static/media/bokong-nature-reserve.1f9a3afec57e144f5d90.jpg",
+    "static/media/liphofung-cave1.jpg": "/static/media/liphofung-cave1.ecc663eefe2bdbd2017a.jpg",
+    "static/media/thaba-bosiu-cultural (1).jpg": "/static/media/thaba-bosiu-cultural (1).75c518d3a0131af0b370.jpg",
+    "static/media/Sani pass.jpg": "/static/media/Sani pass.ab4f29ebf6c442c8fd6e.jpg",
+    "static/media/katse-dam5.jpg": "/static/media/katse-dam5.fbef0a7397a09058f166.jpg",
+    "index.html": "/index.html",
+    "main.266ab4b7.css.map": "/static/css/main.266ab4b7.css.map",
+    "main.9cf9cb71.js.map": "/static/js/main.9cf9cb71.js.map",
+    "453.430fc833.chunk.js.map": "/static/js/453.430fc833.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.266ab4b7.css",
+    "static/js/main.9cf9cb71.js"
+  ]
+}
