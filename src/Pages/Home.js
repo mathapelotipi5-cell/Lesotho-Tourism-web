@@ -5,19 +5,34 @@ import EnquiryForm from "../Components/EnquiryForm";
 import SearchFilter from "../Components/SearchFilter";
 import attractionsData from "../Data/Attraction";
 
+const featuredActivityNames = [
+  "Pony Trekking",
+  "Hiking",
+  "Skiing",
+  "Guided Heritage Tours",
+];
+
 function Home() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
   const [selectedAttraction, setSelectedAttraction] = useState(null);
 
   const visibleAttractions = useMemo(
-    () =>
-      attractionsData.filter(
-        (attraction) =>
-        (attraction.name.toLowerCase().includes(search.trim().toLowerCase()) ||
-          attraction.location.toLowerCase().includes(search.trim().toLowerCase())) &&
-          (category === "All" || attraction.category === category)
-      ),
+    () => {
+      const searchTerm = search.trim().toLowerCase();
+      return attractionsData.filter((attraction) => {
+        const matchesSearch =
+          attraction.name.toLowerCase().includes(searchTerm) ||
+          attraction.location.toLowerCase().includes(searchTerm) ||
+          attraction.activities.some((activity) =>
+            activity.toLowerCase().includes(searchTerm)
+          );
+        const matchesCategory =
+          category === "All" || attraction.category === category;
+
+        return matchesSearch && matchesCategory;
+      });
+    },
     [search, category]
   );
 
@@ -72,6 +87,45 @@ function Home() {
             <strong>All year</strong>
             <span>A reason to take the high road</span>
           </div>
+        </div>
+      </section>
+
+      <section className="popular-activities section-wrap" aria-labelledby="activities-title">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">MAKE IT YOURS</p>
+            <h2 id="activities-title">Find your kind of adventure.</h2>
+          </div>
+          <p>Choose an experience to see the destinations where you can enjoy it.</p>
+        </div>
+        <div className="activity-grid">
+          {featuredActivityNames.map((name) => {
+            const destinationCount = attractionsData.filter((attraction) =>
+              attraction.activities.includes(name)
+            ).length;
+
+            return (
+              <button
+                className="activity-card"
+                type="button"
+                key={name}
+                aria-label={`Explore ${name} destinations`}
+                onClick={() => {
+                  setSearch(name);
+                  setCategory("All");
+                  document.getElementById("destinations")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                <span className="activity-name">{name}</span>
+                <span className="activity-count">
+                  {destinationCount} {destinationCount === 1 ? "destination" : "destinations"}
+                  <span aria-hidden="true"> ↗</span>
+                </span>
+              </button>
+            );
+          })}
         </div>
       </section>
 

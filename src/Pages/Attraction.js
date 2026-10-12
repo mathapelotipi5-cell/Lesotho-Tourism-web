@@ -11,9 +11,13 @@ function Attractions() {
   const [selectedAttraction, setSelectedAttraction] = useState(null);
 
   const filteredAttractions = attractionsData.filter((attraction) => {
+    const searchTerm = search.trim().toLowerCase();
     const matchesSearch =
-      attraction.name.toLowerCase().includes(search.toLowerCase()) ||
-      attraction.location.toLowerCase().includes(search.toLowerCase());
+      attraction.name.toLowerCase().includes(searchTerm) ||
+      attraction.location.toLowerCase().includes(searchTerm) ||
+      attraction.activities.some((activity) =>
+        activity.toLowerCase().includes(searchTerm)
+      );
 
     const matchesCategory =
       category === "All" || attraction.category === category;

@@ -20,6 +20,14 @@ test('searches and filters destinations', () => {
   expect(screen.getAllByRole('article')).toHaveLength(1);
 });
 
+test('shows featured activities and filters destinations when one is selected', () => {
+  render(<App />);
+  fireEvent.click(screen.getByRole('button', { name: /explore pony trekking destinations/i }));
+
+  expect(screen.getByRole('heading', { name: 'Maletsunyane Waterfalls' })).toBeInTheDocument();
+  expect(screen.getAllByRole('article')).toHaveLength(1);
+});
+
 test('opens and closes attraction details', () => {
   render(<App />);
   fireEvent.click(screen.getByRole('button', { name: 'View Maletsunyane Waterfalls details' }));
